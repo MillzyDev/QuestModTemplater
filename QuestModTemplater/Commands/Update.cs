@@ -38,19 +38,17 @@ namespace QuestModTemplater.Commands
                 Directory.CreateDirectory(templatePath);
             } else
             {
-                Console.WriteLine("Purging quest-mod-template directory...");
+                Console.WriteLine("Calling Clear Command!");
 
-                FileUtils.Remove.RemoveReadOnlyDir(Path.Combine(templatePath, @".git\"));
-                Directory.Delete(templatePath, true);
-
-                Console.WriteLine("Creating quest-mod-template directory...");
-                Directory.CreateDirectory(templatePath);
+                Program.commands[0].handle();
             }
 
             Console.WriteLine($"Cloning repository from {BaseValues.baseUrl}...");
                 Repository.Clone(BaseValues.baseUrl, templatePath);
 
             Console.WriteLine("Cloned quest-mod-template!");
+
+            Console.WriteLine("Updated quest-mod-template!");
         }
     }
 }
