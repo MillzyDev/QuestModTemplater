@@ -43,9 +43,6 @@ namespace QuestModTemplater.Commands
             FileUtils.Remove.RemoveReadOnlyDir(Path.Combine(templatePath, @".git\"));
             Directory.Delete(templatePath, true);
 
-            Console.WriteLine("Creating quest-mod-template directory...");
-            Directory.CreateDirectory(templatePath);
-
             Console.WriteLine("Cleared quest-mod-template!");
         }
     }
