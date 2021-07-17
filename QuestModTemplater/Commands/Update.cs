@@ -38,7 +38,7 @@ namespace QuestModTemplater.Commands
                 Directory.CreateDirectory(templatePath);
             } else
             {
-                Console.WriteLine("Calling Clear Command!");
+                Console.WriteLine("Calling Clear.");
 
                 Program.commands[0].handle();
             }
