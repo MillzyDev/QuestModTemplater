@@ -9,19 +9,25 @@ namespace QuestModTemplater.FileUtils
 {
     class Remove
     {
-        public static void RemoveReadOnlyDir(string dir)
+        public static void RemoveReadOnlyDir(string dir) 
         {
-            foreach (var subdir in Directory.EnumerateDirectories(dir))
+            try
             {
-                RemoveReadOnlyDir(subdir);
-            }
-            foreach (var file in Directory.EnumerateFiles(dir))
+                foreach (var subdir in Directory.EnumerateDirectories(dir))
+                {
+                    RemoveReadOnlyDir(subdir);
+                }
+                foreach (var file in Directory.EnumerateFiles(dir))
+                {
+                    var fileInfo = new FileInfo(file);
+                    fileInfo.Attributes = FileAttributes.Normal;
+                    fileInfo.Delete();
+                }
+                Directory.Delete(dir);
+            } catch(DirectoryNotFoundException)
             {
-                var fileInfo = new FileInfo(file);
-                fileInfo.Attributes = FileAttributes.Normal;
-                fileInfo.Delete();
+                Console.WriteLine($"Unable to delete {dir}...");
             }
-            Directory.Delete(dir);
         }
     }
 }
