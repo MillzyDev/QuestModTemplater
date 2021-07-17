@@ -18,7 +18,7 @@ namespace QuestModTemplater.FileUtils
             }
             foreach (FileInfo file in src.GetFiles())
             {
-                // Coppies file to new location
+
                 file.CopyTo(Path.Combine(trg.FullName, file.Name));
             }
         }
@@ -35,11 +35,11 @@ namespace QuestModTemplater.FileUtils
             {
                 string text = File.ReadAllText(file.FullName);
 
-                text.Replace("#{id}", id);
-                text.Replace("#{name}", name);
-                text.Replace("#{description}", desc);
-                text.Replace("#{author}", author);
-                text.Replace("#{ndkpath}", ndkpath);
+                text = text.Replace("#{id}", id);
+                text = text.Replace("#{name}", name);
+                text = text.Replace("#{description}", desc);
+                text = text.Replace("#{author}", author);
+                text = text.Replace("#{ndkpath}", ndkpath);
 
                 File.WriteAllText(file.FullName, text);
             }

@@ -58,6 +58,7 @@ namespace QuestModTemplater.Commands
             // Copy files
             Console.WriteLine("\nCoppying Template to new destination...");
             FileUtils.Template.CopyFilesRecursively(new DirectoryInfo(Path.Combine(templatePath, @"template\")), new DirectoryInfo(execPath));
+            System.Threading.Thread.Sleep(5000);
 
             // Replace values
             Console.WriteLine("Replacing template values...");
