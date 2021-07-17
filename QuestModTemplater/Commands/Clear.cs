@@ -11,7 +11,7 @@ namespace QuestModTemplater.Commands
     {
         public string getDescription()
         {
-            return "Clears the cloned mod-template-repository";
+            return "Clears the cloned quest-mod-template repository";
         }
 
         public string getName()
@@ -21,6 +21,7 @@ namespace QuestModTemplater.Commands
 
         public void handle()
         {
+            // Test paths
             var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var path = Path.Combine(appDataPath, @"QuestModTemplater\");
             Console.WriteLine("Checking if AppData directory exists...");
@@ -40,7 +41,10 @@ namespace QuestModTemplater.Commands
 
             Console.WriteLine("Purging quest-mod-template directory...");
 
+            // Delete .git folder so parent folder can be removed
             FileUtils.Remove.RemoveReadOnlyDir(Path.Combine(templatePath, @".git\"));
+
+            // Delete folder
             Directory.Delete(templatePath, true);
 
             Console.WriteLine("Cleared quest-mod-template!");

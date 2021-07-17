@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuestModTemplater
 {
+    // command interface
     interface ICommand
     {
         public String getName();

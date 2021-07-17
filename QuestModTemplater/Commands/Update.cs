@@ -25,6 +25,7 @@ namespace QuestModTemplater.Commands
 
         void ICommand.handle()
         {
+            // Test if paths exist
             var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var path = Path.Combine(appDataPath, @"QuestModTemplater\");
             Console.WriteLine("Checking if AppData directory exists...");
@@ -38,6 +39,7 @@ namespace QuestModTemplater.Commands
                 Directory.CreateDirectory(templatePath);
             } else
             {
+                // Clear dir
                 Console.WriteLine("Calling Clear.");
 
                 Program.commands[0].handle();

@@ -8,6 +8,6 @@ namespace QuestModTemplater
 {
     class BaseValues
     {
-        public static String baseUrl = "https://github.com/Lauriethefish/quest-mod-template.git";
+        public static String baseUrl = "https://github.com/Lauriethefish/quest-mod-template.git"; // repo url
     }
 }

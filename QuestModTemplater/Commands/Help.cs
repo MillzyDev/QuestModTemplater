@@ -22,6 +22,7 @@ namespace QuestModTemplater.Commands
         {
             foreach (ICommand command in Program.commands)
             {
+                // lists command names and descriptions
                 Console.WriteLine($"{command.getName()} - {command.getDescription()}");
             }
         }

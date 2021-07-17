@@ -15,10 +15,12 @@ namespace QuestModTemplater.FileUtils
             {
                 foreach (var subdir in Directory.EnumerateDirectories(dir))
                 {
+                    // Call self on subdirs
                     RemoveReadOnlyDir(subdir);
                 }
                 foreach (var file in Directory.EnumerateFiles(dir))
                 {
+                    // Modify file attributes
                     var fileInfo = new FileInfo(file);
                     fileInfo.Attributes = FileAttributes.Normal;
                     fileInfo.Delete();

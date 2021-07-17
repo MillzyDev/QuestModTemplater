@@ -9,17 +9,39 @@ namespace QuestModTemplater.FileUtils
 {
     class Template
     {
-        public static void CopyFilesRecursively(string src, string trg)
+        public static void CopyFilesRecursively(DirectoryInfo src, DirectoryInfo trg)
         {
-            // Create all the directories
-            foreach (string dirPath in Directory.GetDirectories(src, "*", SearchOption.AllDirectories))
+            foreach (DirectoryInfo dir in src.GetDirectories())
             {
-                Directory.CreateDirectory(dirPath.Replace(src, trg));
+               // Coppies directory to new location
+                CopyFilesRecursively(dir, trg.CreateSubdirectory(dir.Name));
             }
-            // Copy and overwrite files
-            foreach (string newPath in Directory.GetFiles(src, "*.*", SearchOption.AllDirectories))
+            foreach (FileInfo file in src.GetFiles())
             {
-                File.Copy(newPath, newPath.Replace(src, trg), true);
+                // Coppies file to new location
+                file.CopyTo(Path.Combine(trg.FullName, file.Name));
+            }
+        }
+
+        public static void ReplaceTemplateValues(DirectoryInfo dir, string id, string name, string desc, string author, string ndkpath) 
+        {
+            // Calls self on subdirectories found
+            foreach (DirectoryInfo subdir in dir.GetDirectories())
+            {
+                ReplaceTemplateValues(subdir, id, name, desc, author, ndkpath);
+            }
+            // Replaces template values in files with ones provided
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                string text = File.ReadAllText(file.FullName);
+
+                text.Replace("#{id}", id);
+                text.Replace("#{name}", name);
+                text.Replace("#{description}", desc);
+                text.Replace("#{author}", author);
+                text.Replace("#{ndkpath}", ndkpath);
+
+                File.WriteAllText(file.FullName, text);
             }
         }
     }
