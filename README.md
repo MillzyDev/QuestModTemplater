@@ -10,7 +10,7 @@ Add the directory path of where you just unzipped the programme to your `PATH` e
 (You may need to restart your computer for changes to take affect)
 
 ## Usage
-To create a new mod from the template, run `qmt create`
-To update the template and pull a new version from Laurie's repo, run `qmt update`
-To clear the cloned template, run `qmt clear`
-And to view a list of command run `qmt help`
+- To create a new mod from the template, run `qmt create`
+- To update the template and pull a new version from Laurie's repo, run `qmt update`
+- To clear the cloned template, run `qmt clear`
+- And to view a list of command run `qmt help`
