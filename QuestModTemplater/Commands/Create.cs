@@ -62,7 +62,7 @@ namespace QuestModTemplater.Commands
 
             // Replace values
             Console.WriteLine("Replacing template values...");
-            FileUtils.Template.ReplaceTemplateValues(new DirectoryInfo(Path.Combine(templatePath, @"template\")), id, name, description, author, ndkpath);
+            FileUtils.Template.ReplaceTemplateValues(new DirectoryInfo(execPath), id, name, description, author, ndkpath);
 
             Console.WriteLine("Template created!");
         }
