@@ -21,17 +21,15 @@ namespace QuestModTemplater
             {
                 foreach (ICommand command in commands)
                 {
-                    if (command.getName() == args[0])
+                    if (command.getName().ToLower() == args[0].ToLower())
                     {
                         // Execute command
                         command.handle();
                         return;
                     }
-                    // Call help command
-                    Console.WriteLine("Command not found...");
-                    commands[2].handle();
+                    else throw new Exception();
                 }
-            } catch (IndexOutOfRangeException)
+            } catch (Exception)
             {
                 // Call help command
                 Console.WriteLine("Command not found...");
